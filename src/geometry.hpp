@@ -26,11 +26,15 @@ struct vertex {
 	int p = 0; // index for point in m_points
 	int t = 0; // index for uv in m_uvs
 	int n = 0; // index for normal in m_normals
-	int tang = 0;
+	int tang = 0; // index for tang in m_tangents
 };
 
 struct triangle {
 	vertex v[3]; //requires 3 verticies
+};
+
+struct quadG {
+	vertex v[4]; //requires 3 verticies
 };
 
 class Geometry {
@@ -44,6 +48,7 @@ private:
 	std::vector<cgra::vec3> m_tangents;	// Tangent list
 	//std::vector<cgra::vec3> m_bitangents;	// Bitangent list
 	std::vector<triangle> m_triangles;	// Triangle/Face list
+	std::vector<quadG> m_quadsG;	// Triangle/Face list
 
 	bool m_wireFrameOn = false;
 

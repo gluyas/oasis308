@@ -27,6 +27,12 @@
 #include "spotlight.hpp"
 #include "skybox.hpp"
 
+//Liams code
+#include "perlin.hpp"
+#include "terrain.hpp"
+#include "procedural.hpp"
+
+
 using namespace std;
 using namespace cgra;
 
@@ -40,6 +46,8 @@ GLFWwindow* g_window;
 float g_fovy = 50.0;
 float g_znear = 0.1;
 float g_zfar = 1000.0;
+
+
 //Shadow Map
 float shadowMapSize = 4096;
 
@@ -92,8 +100,8 @@ float dirRot = 0;
 // Values and fields to showcase the use of shaders
 // Remove when modifying main.cpp for Assignment 3
 //
-bool g_useShader = false;
-GLuint *textures = new GLuint[4];
+bool g_useShader = true;
+GLuint *textures = new GLuint[9];
 GLuint *texturesNormal = new GLuint[2];
 GLuint *texturesSpecular = new GLuint[1];
 GLuint shadowMapTexture = 0;
@@ -115,9 +123,12 @@ Geometry *g_torus = nullptr;
 Geometry *g_box = nullptr;
 Geometry *g_teapot = nullptr;
 Geometry *g_bunny = nullptr;
-//Geometry *trees = nullptr;
+Geometry *trees = nullptr;
 Spotlight *spotlight = nullptr;
 Skybox *skybox = nullptr;
+
+//Liams Code
+Procedural *procedural = nullptr;
 
 // Mouse Button callback
 // Called for mouse movement event on since the last glfwPollEvents
@@ -160,6 +171,10 @@ void scrollCallback(GLFWwindow *win, double xoffset, double yoffset) {
 	g_zoom += yoffset*4/* * g_zoom * 0.2*/;
 }
 
+
+float WS = 0;
+float AD = 0;
+float QE = 0;
 
 // Keyboard callback
 // Called for every key event on since the last glfwPollEvents
@@ -271,17 +286,33 @@ void keyCallback(GLFWwindow *win, int key, int scancode, int action, int mods) {
 	if (key == GLFW_KEY_L && (action == GLFW_PRESS || action == GLFW_REPEAT) && !g_ctrlDown) {
 		//dirRot += 5;
 	}
-	if (key == GLFW_KEY_UP && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
-		trans[2] -= 1.0f;
+	if (key == GLFW_KEY_LEFT && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+		procedural->WS += 2;
+		WS += 2;
 	}
-	if (key == GLFW_KEY_DOWN && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
-		trans[2] += 1.0f;
+	if(key == GLFW_KEY_LEFT && (action == GLFW_RELEASE)){
+		procedural->CreateMap();
 	}
 	if (key == GLFW_KEY_RIGHT && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
-		trans[0] += 1.0f;
+		procedural->WS -= 2;
+		WS -= 2;
 	}
-	if (key == GLFW_KEY_LEFT && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
-		trans[0] -= 1.0f;
+	if (key == GLFW_KEY_RIGHT && (action == GLFW_RELEASE)) {
+		procedural->CreateMap();
+	}
+	if (key == GLFW_KEY_UP && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+		procedural->AD -= 2;
+		AD -= 2;
+	}
+	if (key == GLFW_KEY_UP && (action == GLFW_RELEASE)) {
+		procedural->CreateMap();
+	}
+	if (key == GLFW_KEY_DOWN && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+		procedural->AD += 2;
+		AD += 2;
+	}
+	if (key == GLFW_KEY_DOWN && (action == GLFW_RELEASE)) {
+		procedural->CreateMap();
 	}
 }
 
@@ -292,6 +323,24 @@ void keyCallback(GLFWwindow *win, int key, int scancode, int action, int mods) {
 void charCallback(GLFWwindow *win, unsigned int c) {
 	// cout << "Char Callback :: c=" << char(c) << endl;
 	// Not needed for this assignment, but useful to have later on
+	/*if (char(c) == 'w') {
+		procedural->WS++;
+	}
+	if (char(c) == 's') {
+		procedural->WS--;
+	}
+	if (char(c) == 'a') {
+		procedural->AD++;
+	}
+	if (char(c) == 'd') {
+		procedural->AD--;
+	}
+	if (char(c) == 'q') {
+		procedural->QE++;
+	}
+	if (char(c) == 'e') {
+		procedural->QE--;
+	}*/
 }
 
 
@@ -420,7 +469,7 @@ void initTexture() {
 
 
 	glActiveTexture(GL_TEXTURE0); // Use slot 0, need to use GL_TEXTURE1 ... etc if using more than one texture PER OBJECT
-	glGenTextures(4, textures); // Generate texture ID
+	glGenTextures(9, textures); // Generate texture ID
 
 	loadTexture(textures[0], "./work/res/textures/wood.jpg");
 	loadTexture(textures[1], "./work/res/textures/brick.jpg");
@@ -436,7 +485,12 @@ void initTexture() {
 	};
 	loadCubemap(textures[3], faces);*/
 	loadCubemap(textures[3], "./work/res/textures/skybox/skybox.png");
-	
+
+	loadTexture(textures[4], "./work/res/textures/sand.jpg");
+	loadTexture(textures[5], "./work/res/textures/grass.png");
+	loadTexture(textures[6], "./work/res/textures/rock.png");
+	loadTexture(textures[7], "./work/res/textures/rock2.png");
+	loadTexture(textures[8], "./work/res/textures/water.jpg");
 	
 	glActiveTexture(GL_TEXTURE1); // Use slot 0, need to use GL_TEXTURE1 ... etc if using more than one texture PER OBJECT
 	glGenTextures(2, texturesNormal); // Generate texture ID
@@ -485,6 +539,7 @@ void setupCamera(int width, int height) {
 	glRotatef(g_yaw, 0, 1, 0);
 	glTranslatef(g_trans[0], g_trans[1]+ g_zoom, g_trans[2]);
 	glTranslatef(0, -10, -20);
+	glTranslatef(0 + WS, 0 + QE, 0 - AD);
 	
 	//gluLookAt(-g_trans[0], -g_trans[1] - g_zoom, -g_trans[2] + 20,// position of camera
 	//	-g_trans[0], -g_trans[1], -g_trans[2], // position to look at
@@ -599,13 +654,14 @@ void render(int width, int height) {
 	// With shaders
 	// Uses the shaders that you bind for the graphics pipeline
 	//
-	if (!g_useShader) {
+	if (g_useShader) {
 		glEnable(GL_TEXTURE_2D);
 		glUseProgram(g_normalMapShaderPCF);
 		glUniform1i(glGetUniformLocation(g_normalMapShaderPCF, "texture0"), 0);
 		glUniform1i(glGetUniformLocation(g_normalMapShaderPCF, "textureNormal"), 1);
 		glUniform1i(glGetUniformLocation(g_normalMapShaderPCF, "textureShadowMap"), 2);
 		glUniform1i(glGetUniformLocation(g_normalMapShaderPCF, "textureSpecular"), 3);
+		glUniform1i(glGetUniformLocation(g_normalMapShaderPCF, "useNorm"), 1);
 		lightSpaceMatrix = lightProjectionMatrix * lightViewMatrix * cameraViewMatrix;
 
 		int i = 0;
@@ -629,47 +685,29 @@ void render(int width, int height) {
 		g_sphere->renderGeometry(g_rot);
 		g_teapot->renderGeometry(g_rot);
 		g_bunny->renderGeometry(g_rot);
+		
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texturesNormal[0]);
+		procedural->renderGeometry(g_rot);
 		g_torus->renderGeometry(g_rot);
+		glPushMatrix();
+		glTranslatef(0.0f, 0.0f, 10.0f);
+		glScalef(0.001f, 0.001f, 0.001f);
+		trees->renderGeometry(g_rot);
+		glPopMatrix();
 		glUseProgram(0);
 		glActiveTexture(GL_TEXTURE0);
 	}
 
 
-	//without PCF
+	//without shader
 	else {
 		glEnable(GL_TEXTURE_2D);
-		glUseProgram(g_normalMapShader);
-		glUniform1i(glGetUniformLocation(g_normalMapShader, "texture0"), 0);
-		glUniform1i(glGetUniformLocation(g_normalMapShader, "textureNormal"), 1);
-		glUniform1i(glGetUniformLocation(g_normalMapShader, "textureShadowMap"), 2);
-		lightSpaceMatrix = lightProjectionMatrix * lightViewMatrix * cameraViewMatrix;
-
-		int i = 0;
-		for (int col = 0; col < 4; col++) {
-			for (int row = 0; row < 4; row++) {
-				lsm[i] = lightSpaceMatrix[col][row];
-				i++;
-			}
-		}
-		glUniformMatrix4fv(glGetUniformLocation(g_normalMapShader, "lightSpaceMatrix"), 1, GL_FALSE, lsm);
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, textures[2]);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, texturesNormal[1]);
-		glActiveTexture(GL_TEXTURE2);
-		glBindTexture(GL_TEXTURE_2D, shadowMapTexture);
-		g_table->renderGeometry(g_rot);
-		g_box->renderGeometry(g_rot);
-		g_sphere->renderGeometry(g_rot);
-		g_teapot->renderGeometry(g_rot);
-		g_bunny->renderGeometry(g_rot);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, texturesNormal[0]);
-		g_torus->renderGeometry(g_rot);
-		glUseProgram(0);
-		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, textures[0]);
+		procedural->renderGeometry(g_rot);
+		glFlush();
 	}
 
 
@@ -703,11 +741,13 @@ void depthRender(int width, int height) {
 	glLoadIdentity();
 	glTranslatef(0.0f, 0.0f, -50.f);//offset
 	
+	
 	gluLookAt(lightDirection[0]*10, lightDirection[1]*10, lightDirection[2]*10,// position of light
 		0,0, 0, // position to look at
 		0.0, 1.0, 0.0);// up relative to camera
 	
 	glTranslatef(g_trans[0], g_trans[1] + g_zoom, g_trans[2]);
+	glTranslatef(0 + WS, 0 + QE, 0 - AD);
 	/*glRotatef(45, 1, 0, 0);
 	glRotatef(45, 0, 1, 0);
 	glTranslatef(10.0f, -10.0f, -10.0f);*/
@@ -730,6 +770,7 @@ void depthRender(int width, int height) {
 	g_teapot->renderGeometry(g_rot);
 	g_bunny->renderGeometry(g_rot);
 	g_torus->renderGeometry(g_rot);
+	procedural->renderGeometry(g_rot);
 	glUseProgram(0);
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -821,7 +862,7 @@ int main(int argc, char **argv) {
 	initTexture();
 	initShader();
 
-	//trees = new Geometry("./work/res/assets/palm1.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+	trees = new Geometry("./work/res/assets/PalmTree.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f);
 	g_table = new Geometry("./work/res/assets/table.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,10.0f);
 	g_sphere = new Geometry("./work/res/assets/sphere.obj", 0.0f, 0.0f, 0.0f, -5.0f, 2.0f+1.0f, 5.0f, 1.0f, 10.0f);
 	g_box = new Geometry("./work/res/assets/box.obj", 0.0f, 0.0f, 0.0f, 5.0f, 2.5f, -5.0f, 1.0f, 10.0f);
@@ -831,6 +872,7 @@ int main(int argc, char **argv) {
 	
 	spotlight = new Spotlight();
 	skybox = new Skybox();
+	procedural = new Procedural(textures, texturesNormal, g_normalMapShaderPCF, trees);
 
 
 	// Loop until the user closes the window
