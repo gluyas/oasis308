@@ -13,6 +13,9 @@ SET(headers
 	"geometry.hpp"
 	"spotlight.hpp"
 	"skybox.hpp"
+	"perlin.hpp"
+	"terrain.hpp"
+	"procedural.hpp"
 )
 
 
@@ -22,6 +25,10 @@ SET(sources
 	"geometry.cpp"
 	"spotlight.cpp"
 	"skybox.cpp"
+	"perlin.cpp"
+	"terrain.cpp"
+	"procedural.cpp"
+
 )
 
 # Add executable target and link libraries

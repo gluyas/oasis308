@@ -1,0 +1,384 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_geometry.hpp
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+cassert
+-
+algorithm
+-
+cmath
+-
+iomanip
+-
+iostream
+-
+limits
+-
+random
+-
+sstream
+-
+string
+-
+type_traits
+-
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/geometry.cpp
+cmath
+-
+iostream
+-
+fstream
+-
+sstream
+-
+string
+-
+stdexcept
+-
+vector
+-
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+geometry.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/geometry.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/geometry.hpp
+cmath
+-
+iostream
+-
+string
+-
+vector
+-
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/main.cpp
+cmath
+-
+cstdlib
+-
+iostream
+-
+string
+-
+stdexcept
+-
+cgra_geometry.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_geometry.hpp
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+simple_image.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/simple_image.hpp
+simple_shader.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/simple_shader.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+geometry.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/geometry.hpp
+spotlight.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/spotlight.hpp
+skybox.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/skybox.hpp
+perlin.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/perlin.hpp
+terrain.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/terrain.hpp
+procedural.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/procedural.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+GL/glew.h
+-
+OpenGL/glu.h
+-
+GL/glu.h
+-
+GLFW/glfw3.h
+-
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/perlin.cpp
+perlin.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/perlin.hpp
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+cstdlib
+-
+ctime
+-
+cmath
+-
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/perlin.hpp
+cmath
+-
+string
+-
+vector
+-
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/procedural.cpp
+cmath
+-
+string
+-
+stdexcept
+-
+vector
+-
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+procedural.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/procedural.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+terrain.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/terrain.hpp
+perlin.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/perlin.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/procedural.hpp
+cmath
+-
+iostream
+-
+string
+-
+vector
+-
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+geometry.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/geometry.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/simple_image.hpp
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+stb_image.h
+-
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/simple_shader.hpp
+string
+-
+vector
+-
+fstream
+-
+sstream
+-
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/skybox.cpp
+cmath
+-
+iostream
+-
+fstream
+-
+sstream
+-
+string
+-
+stdexcept
+-
+cgra_geometry.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_geometry.hpp
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+skybox.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/skybox.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/skybox.hpp
+cmath
+-
+iostream
+-
+fstream
+-
+sstream
+-
+string
+-
+vector
+-
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/spotlight.cpp
+cmath
+-
+iostream
+-
+fstream
+-
+sstream
+-
+string
+-
+stdexcept
+-
+cgra_geometry.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_geometry.hpp
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+spotlight.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/spotlight.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/spotlight.hpp
+cmath
+-
+iostream
+-
+fstream
+-
+sstream
+-
+string
+-
+vector
+-
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/terrain.cpp
+cmath
+-
+iostream
+-
+string
+-
+vector
+-
+terrain.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/terrain.hpp
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/terrain.hpp
+cmath
+-
+string
+-
+vector
+-
+cgra_math.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/cgra_math.hpp
+opengl.hpp
+/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/src/opengl.hpp
+
+ext/glew-1.10.0/include/GL/glew.h
+stddef.h
+-
+inttypes.h
+-
+stdint.h
+-
+inttypes.h
+-
+OpenGL/glu.h
+-
+GL/glu.h
+-
+
+ext/glfw/include/GLFW/glfw3.h
+stddef.h
+-
+OpenGL/gl3.h
+-
+OpenGL/gl3ext.h
+-
+OpenGL/gl.h
+-
+OpenGL/glu.h
+-
+GL/glcorearb.h
+-
+GLES/gl.h
+-
+GLES/glext.h
+-
+GLES2/gl2.h
+-
+GLES2/gl2ext.h
+-
+GLES3/gl3.h
+-
+GLES3/gl2ext.h
+-
+GLES3/gl31.h
+-
+GLES3/gl2ext.h
+-
+GL/gl.h
+-
+GL/glext.h
+-
+GL/glu.h
+-
+
+ext/stb/stb_image.h
+stb_image.h
+ext/stb/stb_image.h
+stdio.h
+-
+stdarg.h
+-
+stddef.h
+-
+stdlib.h
+-
+string.h
+-
+math.h
+-
+stdio.h
+-
+assert.h
+-
+stdint.h
+-
+emmintrin.h
+-
+intrin.h
+-
+arm_neon.h
+-
+

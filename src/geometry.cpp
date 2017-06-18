@@ -56,6 +56,7 @@ void Geometry::readOBJ(string filename) {
 	m_uvs.clear();
 	m_normals.clear();
 	m_triangles.clear();
+	m_quadsG.clear();
 
 	// Load dummy points because OBJ indexing starts at 1 not 0
 	m_points.push_back(vec3(0,0,0));
@@ -154,6 +155,15 @@ void Geometry::readOBJ(string filename) {
 					m_triangles.push_back(tri);
 
 				}
+
+				if (verts.size() == 4) {
+					quadG q;
+					q.v[0] = verts[0];
+					q.v[1] = verts[1];
+					q.v[2] = verts[2];
+					q.v[2] = verts[3];
+					m_quadsG.push_back(q);
+				}
 			}
 		}
 	}
@@ -163,6 +173,7 @@ void Geometry::readOBJ(string filename) {
 	cout << m_uvs.size()-1 << " uv coords" << endl;
 	cout << m_normals.size()-1 << " normals" << endl;
 	cout << m_triangles.size() << " faces" << endl;
+	cout << m_quadsG.size() << " quads" << endl;
 
 	// If we didn't have any normals, create them
 	if (m_normals.size() <= 1) createNormals();
@@ -179,6 +190,7 @@ void Geometry::readOBJ(string filename) {
 // per vertex normals.
 //-------------------------------------------------------------
 void Geometry::createNormals() {
+	cout << "test Normals" << endl;
 	std::vector<cgra::vec3> normals; //triangle face normals
 	for (int i = 0; i < m_triangles.size(); i++) {
 		vec3 v0 = m_points[m_triangles[i].v[0].p];
@@ -200,6 +212,33 @@ void Geometry::createNormals() {
 		m_normals.push_back(vec3(0, 0, 0));
 
 	}
+	
+
+	std::vector<cgra::vec3> normalsQ; //triangle face normals
+	for (int i = 0; i < m_quadsG.size(); i++) {
+		vec3 v0 = m_points[m_quadsG[i].v[0].p];
+		vec3 v1 = m_points[m_quadsG[i].v[1].p];
+		vec3 v2 = m_points[m_quadsG[i].v[2].p];
+
+		vec3 deltaPos1 = v1 - v0;
+		vec3 deltaPos2 = v2 - v0;
+
+		vec3 normal(cross(deltaPos1, deltaPos2));
+		normalsQ.push_back(normal);
+
+		m_quadsG[i].v[0].n = m_quadsG[i].v[0].p;	//set n as p because need normal for every vertex/point
+		m_quadsG[i].v[1].n = m_quadsG[i].v[1].p;
+		m_quadsG[i].v[2].n = m_quadsG[i].v[2].p;
+		m_quadsG[i].v[3].n = m_quadsG[i].v[3].p;
+
+		m_normals.push_back(vec3(0, 0, 0));	//create 0 normal for each point/vertex
+		m_normals.push_back(vec3(0, 0, 0));
+		m_normals.push_back(vec3(0, 0, 0));
+		m_normals.push_back(vec3(0, 0, 0));
+
+	}
+
+	//tri
 	for (int j = 0; j < m_triangles.size(); j++) {
 		for (int k = 0; k < 3; k++) {
 			m_normals[m_triangles[j].v[k].n] += normals[j]; //sum vertex normal with face normal
@@ -210,9 +249,22 @@ void Geometry::createNormals() {
 			normalize(m_normals[m_triangles[j].v[k].n]);
 		}
 	}
+
+	//quads
+	for (int j = 0; j < m_quadsG.size(); j++) {
+		for (int k = 0; k < 4; k++) {
+			m_normals[m_quadsG[j].v[k].n] += normalsQ[j]; //sum vertex normal with face normal
+		}
+	}
+	for (int j = 0; j < m_quadsG.size(); j++) {
+		for (int k = 0; k < 4; k++) {
+			normalize(m_normals[m_quadsG[j].v[k].n]);
+		}
+	}
 }
 
 void Geometry::createTangents() {
+	
 	std::vector<cgra::vec3> tangents; //triangle face normals
 	for (int i = 0; i < m_triangles.size(); i++) {
 		
@@ -242,9 +294,46 @@ void Geometry::createTangents() {
 		m_tangents.push_back(vec3(0, 0, 0));
 		m_tangents.push_back(vec3(0, 0, 0));
 	}
+	
+	std::vector<cgra::vec3> tangentsQ; //triangle face normals
+	for (int i = 0; i < m_quadsG.size(); i++) {
+
+		vec3 v0 = m_points[m_quadsG[i].v[0].p];
+		vec3 v1 = m_points[m_quadsG[i].v[1].p];
+		vec3 v2 = m_points[m_quadsG[i].v[2].p];
+
+		vec2 uv0 = m_uvs[m_quadsG[i].v[0].t];
+		vec2 uv1 = m_uvs[m_quadsG[i].v[1].t];
+		vec2 uv2 = m_uvs[m_quadsG[i].v[2].t];
+
+		vec3 deltaPos1 = v1 - v0;
+		vec3 deltaPos2 = v2 - v0;
+
+		vec2 deltaUV1 = uv1 - uv0;
+		vec2 deltaUV2 = uv2 - uv0;
+
+		float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
+		vec3 tangent = (deltaPos1 * deltaUV2.y - deltaPos2 * deltaUV1.y)*r;
+		tangentsQ.push_back(tangent);
+
+		m_quadsG[i].v[0].tang = m_quadsG[i].v[0].p;	//set n as p because need normal for every vertex/point
+		m_quadsG[i].v[1].tang = m_quadsG[i].v[1].p;
+		m_quadsG[i].v[2].tang = m_quadsG[i].v[2].p;
+		m_quadsG[i].v[3].tang = m_quadsG[i].v[3].p;
+
+		m_tangents.push_back(vec3(0, 0, 0));	//create 0 normal for each point/vertex
+		m_tangents.push_back(vec3(0, 0, 0));
+		m_tangents.push_back(vec3(0, 0, 0));
+		m_tangents.push_back(vec3(0, 0, 0));
+	}
 	for (int j = 0; j < m_triangles.size(); j++) {
 		for (int k = 0; k < 3; k++) {
 			m_tangents[m_triangles[j].v[k].tang] += tangents[j]; //sum vertex normal with face normal
+		}
+	}
+	for (int j = 0; j < m_quadsG.size(); j++) {
+		for (int k = 0; k < 4; k++) {
+			m_tangents[m_quadsG[j].v[k].tang] += tangentsQ[j]; //sum vertex normal with face normal
 		}
 	}
 }
@@ -287,6 +376,34 @@ void Geometry::createDisplayListPoly() {
 		glColor3f(m_tangents[t.v[2].tang][0], m_tangents[t.v[2].tang][1], m_tangents[t.v[2].tang][2]);
 		glVertex3f(m_points[t.v[2].p][0], m_points[t.v[2].p][1], m_points[t.v[2].p][2]);
 
+	}
+	glBegin(GL_QUADS);
+	for (quadG q : m_quadsG) {
+		//v0
+		glNormal3f(m_normals[q.v[0].n][0], m_normals[q.v[0].n][1], m_normals[q.v[0].n][2]);
+		glTexCoord2f(m_uvs[q.v[0].t][0], m_uvs[q.v[0].t][1]);
+		glColor3f(m_tangents[q.v[0].tang][0], m_tangents[q.v[0].tang][1], m_tangents[q.v[0].tang][2]);
+		glVertex3f(m_points[q.v[0].p][0], m_points[q.v[0].p][1], m_points[q.v[0].p][2]);
+
+
+		//v1
+		glNormal3f(m_normals[q.v[1].n][0], m_normals[q.v[1].n][1], m_normals[q.v[1].n][2]);
+		glTexCoord2f(m_uvs[q.v[1].t][0], m_uvs[q.v[1].t][1]);
+		glColor3f(m_tangents[q.v[1].tang][0], m_tangents[q.v[1].tang][1], m_tangents[q.v[1].tang][2]);
+		glVertex3f(m_points[q.v[1].p][0], m_points[q.v[1].p][1], m_points[q.v[1].p][2]);
+
+
+		//v2
+		glNormal3f(m_normals[q.v[2].n][0], m_normals[q.v[2].n][1], m_normals[q.v[2].n][2]);
+		glTexCoord2f(m_uvs[q.v[2].t][0], m_uvs[q.v[2].t][1]);
+		glColor3f(m_tangents[q.v[2].tang][0], m_tangents[q.v[2].tang][1], m_tangents[q.v[2].tang][2]);
+		glVertex3f(m_points[q.v[2].p][0], m_points[q.v[2].p][1], m_points[q.v[2].p][2]);
+		
+		//v3
+		glNormal3f(m_normals[q.v[3].n][0], m_normals[q.v[3].n][1], m_normals[q.v[3].n][2]);
+		glTexCoord2f(m_uvs[q.v[3].t][0], m_uvs[q.v[3].t][1]);
+		glColor3f(m_tangents[q.v[3].tang][0], m_tangents[q.v[3].tang][1], m_tangents[q.v[3].tang][2]);
+		glVertex3f(m_points[q.v[3].p][0], m_points[q.v[3].p][1], m_points[q.v[3].p][2]);
 	}
 	glEnd();
 	glEndList();

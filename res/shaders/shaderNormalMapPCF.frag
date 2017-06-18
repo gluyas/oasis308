@@ -20,6 +20,7 @@ uniform sampler2D textureNormal;
 uniform sampler2D textureShadowMap;
 uniform sampler2D textureSpecular;
 uniform mat4 lightSpaceMatrix;
+uniform int useNorm;
 
 // Values passed in from the vertex shader
 varying vec3 vNormal;
@@ -59,10 +60,16 @@ void main() {
 
 	vec3 color = texture2D(texture0, vTextureCoord0).rgb;
 
+	vec3 norm;
 	//bump map normal
+	if(useNorm == 1){
 	vec3 N = texture2D(textureNormal, vTextureCoord0).rgb;
-	vec3 norm = vec3(N.x*2 - 1, N.y*2 - 1, N.z*2 - 1);
+	norm = vec3(N.x*2 - 1, N.y*2 - 1, N.z*2 - 1);
 	norm = norm * toTangentSpace;
+	}
+	else{
+	norm = vNormal;
+	}
 
 	vec4 specH = texture2D(textureSpecular, vTextureCoord0).rgba;
 	
@@ -109,4 +116,5 @@ void main() {
 
 	// write Total Color:
 	gl_FragColor = gl_LightModel.ambient + finalColor;
+	//gl_FragColor = vec4(abs(norm), 1);
 }
