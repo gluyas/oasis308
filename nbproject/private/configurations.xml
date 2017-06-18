@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="bin">
+      </df>
+      <df name="CMakeFiles">
+        <df name="3.7.2">
+          <df name="CompilerIdC">
+            <in>CMakeCCompilerId.c</in>
+          </df>
+          <df name="CompilerIdCXX">
+            <in>CMakeCXXCompilerId.cpp</in>
+          </df>
+        </df>
+        <df name="CMakeTmp">
+        </df>
+        <in>feature_tests.c</in>
+        <in>feature_tests.cxx</in>
+      </df>
+      <df name="ext">
+        <df name="glew-1.10.0">
+          <df name="CMakeFiles">
+            <df name="glew.dir">
+              <df name="src">
+              </df>
+            </df>
+          </df>
+          <df name="include">
+            <df name="GL">
+              <in>glew.h</in>
+              <in>glxew.h</in>
+              <in>wglew.h</in>
+            </df>
+          </df>
+          <df name="src">
+            <in>glew.c</in>
+          </df>
+        </df>
+        <df name="glfw">
+          <df name="CMake">
+            <df name="modules">
+            </df>
+          </df>
+          <df name="CMakeFiles">
+            <df name="Export">
+              <df name="lib">
+                <df name="cmake">
+                  <df name="glfw">
+                  </df>
+                </df>
+              </df>
+            </df>
+            <df name="uninstall.dir">
+            </df>
+          </df>
+          <df name="deps">
+            <df name="EGL">
+              <in>eglext.h</in>
+            </df>
+            <df name="GL">
+              <in>glext.h</in>
+              <in>glxext.h</in>
+              <in>wglext.h</in>
+            </df>
+            <df name="glad">
+              <in>glad.h</in>
+            </df>
+            <df name="KHR">
+              <in>khrplatform.h</in>
+            </df>
+            <in>getopt.c</in>
+            <in>getopt.h</in>
+            <in>glad.c</in>
+            <in>tinycthread.c</in>
+            <in>tinycthread.h</in>
+          </df>
+          <df name="docs">
+            <df name="CMakeFiles">
+              <df name="docs.dir">
+              </df>
+            </df>
+            <df name="html">
+              <df name="search">
+              </df>
+            </df>
+          </df>
+          <df name="include">
+            <df name="GLFW">
+              <in>glfw3.h</in>
+              <in>glfw3native.h</in>
+            </df>
+          </df>
+          <df name="src">
+            <df name="CMakeFiles">
+              <df name="glfw.dir">
+              </df>
+            </df>
+            <in>cocoa_init.m</in>
+            <in>cocoa_monitor.m</in>
+            <in>cocoa_platform.h</in>
+            <in>cocoa_window.m</in>
+            <in>context.c</in>
+            <in>egl_context.c</in>
+            <in>egl_context.h</in>
+            <in>glfw_config.h</in>
+            <in>glx_context.c</in>
+            <in>glx_context.h</in>
+            <in>init.c</in>
+            <in>input.c</in>
+            <in>internal.h</in>
+            <in>iokit_joystick.h</in>
+            <in>iokit_joystick.m</in>
+            <in>linux_joystick.c</in>
+            <in>linux_joystick.h</in>
+            <in>mach_time.c</in>
+            <in>mir_init.c</in>
+            <in>mir_monitor.c</in>
+            <in>mir_platform.h</in>
+            <in>mir_window.c</in>
+            <in>monitor.c</in>
+            <in>nsgl_context.h</in>
+            <in>nsgl_context.m</in>
+            <in>posix_time.c</in>
+            <in>posix_time.h</in>
+            <in>posix_tls.c</in>
+            <in>posix_tls.h</in>
+            <in>wgl_context.c</in>
+            <in>wgl_context.h</in>
+            <in>win32_init.c</in>
+            <in>win32_monitor.c</in>
+            <in>win32_platform.h</in>
+            <in>win32_time.c</in>
+            <in>win32_tls.c</in>
+            <in>win32_tls.h</in>
+            <in>win32_window.c</in>
+            <in>window.c</in>
+            <in>winmm_joystick.c</in>
+            <in>winmm_joystick.h</in>
+            <in>wl_init.c</in>
+            <in>wl_monitor.c</in>
+            <in>wl_platform.h</in>
+            <in>wl_window.c</in>
+            <in>x11_init.c</in>
+            <in>x11_monitor.c</in>
+            <in>x11_platform.h</in>
+            <in>x11_window.c</in>
+            <in>xkb_unicode.c</in>
+            <in>xkb_unicode.h</in>
+          </df>
+        </df>
+        <df name="stb">
+          <df name="CMakeFiles">
+            <df name="stb.dir">
+            </df>
+          </df>
+          <in>stb.c</in>
+          <in>stb_image.h</in>
+        </df>
+      </df>
+      <df name="README">
+      </df>
+      <df name="res">
+        <df name="assets">
+          <df name="pt">
+            <df name="palmtreeOBJ">
+            </df>
+          </df>
+        </df>
+        <df name="CMakeFiles">
+          <df name="res.dir">
+          </df>
+        </df>
+        <df name="shaders">
+          <df name="examples">
+          </df>
+        </df>
+        <df name="textures">
+          <df name="sand">
+          </df>
+          <df name="skybox">
+          </df>
+          <df name="tree">
+          </df>
+        </df>
+      </df>
+      <df name="src">
+        <df name="CMakeFiles">
+          <df name="a3.dir">
+          </df>
+        </df>
+        <in>cgra_geometry.hpp</in>
+        <in>cgra_math.hpp</in>
+        <in>geometry.cpp</in>
+        <in>geometry.hpp</in>
+        <in>imageLoader.hpp</in>
+        <in>main.cpp</in>
+        <in>opengl.hpp</in>
+        <in>perlin.cpp</in>
+        <in>perlin.hpp</in>
+        <in>procedural.cpp</in>
+        <in>procedural.hpp</in>
+        <in>simple_image.hpp</in>
+        <in>simple_shader.hpp</in>
+        <in>skybox.cpp</in>
+        <in>skybox.hpp</in>
+        <in>spotlight.cpp</in>
+        <in>spotlight.hpp</in>
+        <in>terrain.cpp</in>
+        <in>terrain.hpp</in>
+      </df>
+    </df>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>2</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>.</rundir>
+        <buildfirst>false</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

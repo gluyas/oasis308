@@ -1,0 +1,24 @@
+Scanning dependencies of target glfw
+make[2]: Warning: File 'ext/glfw/src/CMakeFiles/glfw.dir/depend.make' has modification time 0.0027 s in the future
+[  3%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/context.c.o
+[  7%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/init.c.o
+[ 11%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/input.c.o
+[ 14%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/monitor.c.o
+[ 18%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/window.c.o
+[ 22%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/x11_init.c.o
+[ 25%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/x11_monitor.c.o
+[ 29%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/x11_window.c.o
+[ 33%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/xkb_unicode.c.o
+[ 37%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/linux_joystick.c.o
+[ 40%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/posix_time.c.o
+[ 44%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/posix_tls.c.o
+[ 48%] Building C object ext/glfw/src/CMakeFiles/glfw.dir/glx_context.c.o
+[ 51%] Linking C static library ../../../bin/libglfw3.a
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+[ 51%] Built target glfw
+Scanning dependencies of target docs
+[ 55%] Generating HTML documentation
+error: tag HTML_HEADER: header file `/am/monterey/home1/foleylliam/Comp308/FinalProj3.0/work/ext/glfw/docs/header.html' does not exist
+make[2]: *** [ext/glfw/docs/CMakeFiles/docs.dir/build.make:58: ext/glfw/docs/CMakeFiles/docs] Error 1
+make[1]: *** [CMakeFiles/Makefile2:195: ext/glfw/docs/CMakeFiles/docs.dir/all] Error 2
+make: *** [Makefile:128: all] Error 2

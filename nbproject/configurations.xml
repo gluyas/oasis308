@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="ext">
+        <df name="glew-1.10.0">
+          <df name="src">
+            <in>glew.c</in>
+          </df>
+        </df>
+        <df name="glfw">
+          <df name="src">
+            <in>context.c</in>
+            <in>glx_context.c</in>
+            <in>init.c</in>
+            <in>input.c</in>
+            <in>linux_joystick.c</in>
+            <in>monitor.c</in>
+            <in>posix_time.c</in>
+            <in>posix_tls.c</in>
+            <in>window.c</in>
+            <in>x11_init.c</in>
+            <in>x11_monitor.c</in>
+            <in>x11_window.c</in>
+            <in>xkb_unicode.c</in>
+          </df>
+        </df>
+        <df name="stb">
+          <in>stb.c</in>
+        </df>
+      </df>
+      <df name="src">
+        <in>geometry.cpp</in>
+        <in>main.cpp</in>
+        <in>perlin.cpp</in>
+        <in>procedural.cpp</in>
+        <in>skybox.cpp</in>
+        <in>spotlight.cpp</in>
+        <in>terrain.cpp</in>
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>CMakeLists.txt</itemPath>
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-fPIC"/>
+        <element flagsID="1" commonFlags="-std=c++1y"/>
+      </flagsDictionary>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+          <ccTool>
+            <incDir>
+              <pElem>ext/glfw/include</pElem>
+              <pElem>ext/glew-1.10.0/include</pElem>
+              <pElem>ext/stb</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>GLEW_STATIC</Elem>
+            </preprocessorList>
+          </ccTool>
+        </makeTool>
+      </makefileType>
+      <item path="ext/glew-1.10.0/src/glew.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ext/glfw/src/context.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/glx_context.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/init.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/input.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/linux_joystick.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/monitor.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/posix_time.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/posix_tls.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/window.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/x11_init.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/x11_monitor.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/x11_window.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/glfw/src/xkb_unicode.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="ext/stb/stb.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <folder path="0/ext/glew-1.10.0">
+        <cTool>
+          <incDir>
+            <pElem>ext/glfw/include</pElem>
+            <pElem>ext/glew-1.10.0/include</pElem>
+            <pElem>ext/glew-1.10.0</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>GLEW_STATIC</Elem>
+          </preprocessorList>
+        </cTool>
+      </folder>
+      <folder path="0/ext/glfw">
+        <cTool>
+          <incDir>
+            <pElem>ext/glfw/src/"/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/"</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>_GLFW_USE_CONFIG_H</Elem>
+          </preprocessorList>
+        </cTool>
+      </folder>
+      <folder path="0/ext/stb">
+        <cTool>
+          <incDir>
+            <pElem>ext/glfw/include</pElem>
+            <pElem>ext/stb</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <item path="src/geometry.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
+      </item>
+      <item path="src/perlin.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
+      </item>
+      <item path="src/procedural.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
+      </item>
+      <item path="src/skybox.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
+      </item>
+      <item path="src/spotlight.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
+      </item>
+      <item path="src/terrain.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

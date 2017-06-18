@@ -1,0 +1,201 @@
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/context.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/context.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/init.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/init.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/input.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/input.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/monitor.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/monitor.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/window.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/window.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/x11_init.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/x11_init.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/x11_monitor.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/x11_monitor.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/x11_window.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/x11_window.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/xkb_unicode.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/xkb_unicode.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/linux_joystick.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/linux_joystick.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/posix_time.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/posix_time.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/posix_tls.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/posix_tls.c
+
+called: /bin/gcc
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/gcc
+	-D_GLFW_USE_CONFIG_H
+	-I/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	-g3
+	-gdwarf-2
+	-fPIC
+	-Wall
+	-o
+	CMakeFiles/glfw.dir/glx_context.c.o
+	-c
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src/glx_context.c
+
+called: /bin/ar
+	/am/monterey/home1/foleylliam/Comp308/FinalProj 3.0/work/ext/glfw/src
+	/bin/ar
+	qc
+	../../../bin/libglfw3.a
+	CMakeFiles/glfw.dir/context.c.o
+	CMakeFiles/glfw.dir/init.c.o
+	CMakeFiles/glfw.dir/input.c.o
+	CMakeFiles/glfw.dir/monitor.c.o
+	CMakeFiles/glfw.dir/window.c.o
+	CMakeFiles/glfw.dir/x11_init.c.o
+	CMakeFiles/glfw.dir/x11_monitor.c.o
+	CMakeFiles/glfw.dir/x11_window.c.o
+	CMakeFiles/glfw.dir/xkb_unicode.c.o
+	CMakeFiles/glfw.dir/linux_joystick.c.o
+	CMakeFiles/glfw.dir/posix_time.c.o
+	CMakeFiles/glfw.dir/posix_tls.c.o
+	CMakeFiles/glfw.dir/glx_context.c.o
+
