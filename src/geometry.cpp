@@ -190,7 +190,6 @@ void Geometry::readOBJ(string filename) {
 // per vertex normals.
 //-------------------------------------------------------------
 void Geometry::createNormals() {
-	cout << "test Normals" << endl;
 	std::vector<cgra::vec3> normals; //triangle face normals
 	for (int i = 0; i < m_triangles.size(); i++) {
 		vec3 v0 = m_points[m_triangles[i].v[0].p];

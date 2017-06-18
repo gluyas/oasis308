@@ -168,7 +168,7 @@ void mouseButtonCallback(GLFWwindow *win, int button, int action, int mods) {
 //
 void scrollCallback(GLFWwindow *win, double xoffset, double yoffset) {
 	// cout << "Scroll Callback :: xoffset=" << xoffset << "yoffset=" << yoffset << endl;
-	g_zoom += yoffset*4/* * g_zoom * 0.2*/;
+	g_zoom += yoffset*2/* * g_zoom * 0.2*/;
 }
 
 
@@ -680,21 +680,21 @@ void render(int width, int height) {
 		glBindTexture(GL_TEXTURE_2D, shadowMapTexture);
 		glActiveTexture(GL_TEXTURE3);
 		glBindTexture(GL_TEXTURE_2D, texturesSpecular[0]);
-		g_table->renderGeometry(g_rot);
+		/*g_table->renderGeometry(g_rot);
 		g_box->renderGeometry(g_rot);
 		g_sphere->renderGeometry(g_rot);
 		g_teapot->renderGeometry(g_rot);
-		g_bunny->renderGeometry(g_rot);
+		g_bunny->renderGeometry(g_rot);*/
 		
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texturesNormal[0]);
 		procedural->renderGeometry(g_rot);
-		g_torus->renderGeometry(g_rot);
-		glPushMatrix();
+		//g_torus->renderGeometry(g_rot);
+		/*glPushMatrix();
 		glTranslatef(0.0f, 0.0f, 10.0f);
 		glScalef(0.001f, 0.001f, 0.001f);
 		trees->renderGeometry(g_rot);
-		glPopMatrix();
+		glPopMatrix();*/
 		glUseProgram(0);
 		glActiveTexture(GL_TEXTURE0);
 	}
@@ -728,7 +728,7 @@ void depthRender(int width, int height) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	//gluPerspective(g_fovy, width / float(height), g_znear, g_zfar);
-	glOrtho(-100.0f, 100.0f, -100.0f, 100.0f, g_znear, g_zfar);
+	glOrtho(-75.0f, 75.0f, -75.0f, 75.0f, g_znear, 200.0f);
 	glGetFloatv(GL_PROJECTION_MATRIX, lpm);
 	lightProjectionMatrix = {
 		lpm[0], lpm[1], lpm[2], lpm[3],
@@ -764,12 +764,12 @@ void depthRender(int width, int height) {
 	glCullFace(GL_FRONT);
 
 	glUseProgram(g_testShader);
-	g_table->renderGeometry(g_rot);
+	/*g_table->renderGeometry(g_rot);
 	g_box->renderGeometry(g_rot);
 	g_sphere->renderGeometry(g_rot);
 	g_teapot->renderGeometry(g_rot);
 	g_bunny->renderGeometry(g_rot);
-	g_torus->renderGeometry(g_rot);
+	g_torus->renderGeometry(g_rot);*/
 	procedural->renderGeometry(g_rot);
 	glUseProgram(0);
 
