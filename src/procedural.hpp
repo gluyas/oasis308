@@ -15,7 +15,7 @@ struct quad {
 	cgra::vec3 p2;
 	cgra::vec3 p3;
 	cgra::vec3 p4;
-};
+};	   
 
 class Procedural {
 private:
@@ -26,6 +26,13 @@ private:
 	Geometry *trees;
 
 	std::vector<quad> m_quads;
+
+	std::vector<triangle> m_triangles;
+
+	std::vector<cgra::vec3> m_points;	// Point list
+	std::vector<cgra::vec2> m_uvs;		// Texture Coordinate list
+	std::vector<cgra::vec3> m_normals;	// Normal list
+	std::vector<cgra::vec3> m_tangents;	// Tangent list
 
 	void setTexture(float height);
 	void setNormal(cgra::vec3 a, cgra::vec3 b, cgra::vec3 c);
@@ -39,6 +46,10 @@ private:
 
 	GLuint m_displayList = 0;
 	std::vector<GLuint> m_displayListWater;
+
+	void createNormals();
+	void createTangents();
+	void createDisplayListTri();
 
 public:
 
