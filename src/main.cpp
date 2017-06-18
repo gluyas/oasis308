@@ -124,6 +124,7 @@ Geometry *g_box = nullptr;
 Geometry *g_teapot = nullptr;
 Geometry *g_bunny = nullptr;
 Geometry *trees = nullptr;
+Geometry *grass = nullptr;
 Spotlight *spotlight = nullptr;
 Skybox *skybox = nullptr;
 
@@ -863,6 +864,8 @@ int main(int argc, char **argv) {
 	initShader();
 
 	trees = new Geometry("./work/res/assets/PalmTree.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+        grass = new Geometry("./work/res/assets/GRASS.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+        
 	g_table = new Geometry("./work/res/assets/table.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,10.0f);
 	g_sphere = new Geometry("./work/res/assets/sphere.obj", 0.0f, 0.0f, 0.0f, -5.0f, 2.0f+1.0f, 5.0f, 1.0f, 10.0f);
 	g_box = new Geometry("./work/res/assets/box.obj", 0.0f, 0.0f, 0.0f, 5.0f, 2.5f, -5.0f, 1.0f, 10.0f);
@@ -872,7 +875,14 @@ int main(int argc, char **argv) {
 	
 	spotlight = new Spotlight();
 	skybox = new Skybox();
-	procedural = new Procedural(textures, texturesNormal, g_normalMapShaderPCF, trees);
+        
+
+        
+        int seedInput = atoi(argv[1]);         
+        float oasisDiamiterInput = atof(argv[2]);
+        float oasisDepthInput = atof(argv[3]);
+        
+	procedural = new Procedural(textures, texturesNormal, g_normalMapShaderPCF, trees,grass ,seedInput,oasisDiamiterInput,oasisDepthInput);
 
 
 	// Loop until the user closes the window

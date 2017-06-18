@@ -24,6 +24,7 @@ private:
 	GLuint *texturesNormal;
 	GLuint g_normalMapShaderPCF;
 	Geometry *trees;
+        Geometry *grasss;
 
 	std::vector<quad> m_quads;
 
@@ -58,7 +59,7 @@ public:
 	float QE;
 
 
-	Procedural(GLuint *textures, GLuint *texturesNormal, GLuint g_normalMapShaderPCF, Geometry *tree);
+	Procedural(GLuint *textures, GLuint *texturesNormal, GLuint g_normalMapShaderPCF, Geometry *tree,Geometry *grass, int seedInput, float oasisDiamiterInput, float oasisDepthInput);
 	~Procedural();
 
 	void renderGeometry(cgra::vec3 g_rot);
