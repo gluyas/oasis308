@@ -13,8 +13,9 @@ varying vec2 vTextureCoord0;
 
 void main() {
     vec3 viewDirection = (gl_ModelViewMatrix * vec4(0, 0, -1, 1)).xyz;
-    //vec2 gradient = texture2D(waterGradientMap, waterCoord).rg;
-    vec2 gradient = vec2(0, 0);
+    vec2 gradient = texture2D(waterGradientMap, waterCoord).rg - vec2(0.5, 0.5);
+
+    gradient *= cos(offset*100);
 
     vec3 normal = gl_NormalMatrix * normalize(vec3(gradient.x, 1, gradient.y));
 

@@ -77,7 +77,7 @@ public:
         glGenTextures(1, &gradientTex); // Generate texture ID
         glBindTexture(GL_TEXTURE_2D, gradientTex); // Bind it as a 2D texture
 
-        //loadTexture(gradientTex, "./res/textures/waterdudv.jpg");
+        loadTexture(gradientTex, "./res/textures/waterdudv.jpg");
 
         // INITIAL BASE, HEIGHT SAMPLING
 
@@ -116,7 +116,7 @@ public:
     }
 
     void render() {
-        timeElapsed += 0.01f;
+        timeElapsed += 0.0005f;
 
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -125,7 +125,7 @@ public:
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, gradientTex);
 
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, W_RES, W_RES, 0, GL_RG, GL_FLOAT, gradientMap);
+        //glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, W_RES, W_RES, 0, GL_RG, GL_FLOAT, gradientMap);
         glUniform1i(glGetUniformLocation(GL_TEXTURE0, "waterGradientMap"), 0);
         glUniform1f(glGetUniformLocation(shader, "offset"), timeElapsed);
 

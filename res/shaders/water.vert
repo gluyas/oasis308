@@ -35,9 +35,9 @@ void main() {
     waterCoord.x /= waterBoundB.x - waterBoundA.x;
     waterCoord.y /= waterBoundB.y - waterBoundA.y;
 
-    //waterCoord.x += offset;
+    waterCoord += offset*(0.7, 0.3);
 
-    waterCoord *= 50;
+    waterCoord *= 30;
 
 	// Transform and pass on the normal/position/texture to fragment shader
     vNormal = normalize(gl_NormalMatrix * vec3(0, 1, 0));
