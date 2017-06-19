@@ -26,6 +26,7 @@
 #include "geometry.hpp"
 #include "spotlight.hpp"
 #include "skybox.hpp"
+#include "water.hpp"
 
 //Liams code
 #include "perlin.hpp"
@@ -116,13 +117,7 @@ GLuint g_phongTexShader = 0;
 GLuint g_phongShader = 0;
 
 // Geometry loader and drawer
-//
-Geometry *g_table = nullptr;
-Geometry *g_sphere = nullptr;
-Geometry *g_torus = nullptr;
-Geometry *g_box = nullptr;
-Geometry *g_teapot = nullptr;
-Geometry *g_bunny = nullptr;
+
 Geometry *trees = nullptr;
 Geometry *grass = nullptr;
 Spotlight *spotlight = nullptr;
@@ -130,6 +125,8 @@ Skybox *skybox = nullptr;
 
 //Liams Code
 Procedural *procedural = nullptr;
+
+Water* g_water;
 
 // Mouse Button callback
 // Called for mouse movement event on since the last glfwPollEvents
@@ -472,39 +469,39 @@ void initTexture() {
 	glActiveTexture(GL_TEXTURE0); // Use slot 0, need to use GL_TEXTURE1 ... etc if using more than one texture PER OBJECT
 	glGenTextures(9, textures); // Generate texture ID
 
-	loadTexture(textures[0], "./work/res/textures/wood.jpg");
-	loadTexture(textures[1], "./work/res/textures/brick.jpg");
-	loadTexture(textures[2], "./work/res/textures/sand/sand1.jpg");
+	loadTexture(textures[0], "./res/textures/wood.jpg");
+	loadTexture(textures[1], "./res/textures/brick.jpg");
+	loadTexture(textures[2], "./res/textures/sand/sand1.jpg");
 	/*vector<std::string> faces
 	{
-		"./work/res/textures/right.png",
-		"./work/res/textures/left.png",
-		"./work/res/textures/top.png",
-		"./work/res/textures/bottom.png",
-		"./work/res/textures/back.png",
-		"./work/res/textures/front.png"
+		"./res/textures/right.png",
+		"./res/textures/left.png",
+		"./res/textures/top.png",
+		"./res/textures/bottom.png",
+		"./res/textures/back.png",
+		"./res/textures/front.png"
 	};
 	loadCubemap(textures[3], faces);*/
-	loadCubemap(textures[3], "./work/res/textures/skybox/skybox.png");
+	loadCubemap(textures[3], "./res/textures/skybox/skybox.png");
 
-	loadTexture(textures[4], "./work/res/textures/sand.jpg");
-	loadTexture(textures[5], "./work/res/textures/grass.png");
-	loadTexture(textures[6], "./work/res/textures/rock.png");
-	loadTexture(textures[7], "./work/res/textures/rock2.png");
-	loadTexture(textures[8], "./work/res/textures/water.jpg");
+	loadTexture(textures[4], "./res/textures/sand.jpg");
+	loadTexture(textures[5], "./res/textures/grass.png");
+	loadTexture(textures[6], "./res/textures/rock.png");
+	loadTexture(textures[7], "./res/textures/rock2.png");
+	loadTexture(textures[8], "./res/textures/water.jpg");
 	
 	glActiveTexture(GL_TEXTURE1); // Use slot 0, need to use GL_TEXTURE1 ... etc if using more than one texture PER OBJECT
 	glGenTextures(2, texturesNormal); // Generate texture ID
 
-	loadTexture(texturesNormal[0], "./work/res/textures/normalMap.jpg");
-	loadTexture(texturesNormal[1], "./work/res/textures/sand/sand_normal.jpg");
+	loadTexture(texturesNormal[0], "./res/textures/normalMap.jpg");
+	loadTexture(texturesNormal[1], "./res/textures/sand/sand_normal.jpg");
 
 	glActiveTexture(GL_TEXTURE2);
 	createShadowMapTexture();
 
 	glActiveTexture(GL_TEXTURE3);
 	glGenTextures(1, texturesSpecular);
-	loadTexture(texturesSpecular[0], "./work/res/textures/sand/sand_specular.jpg");
+	loadTexture(texturesSpecular[0], "./res/textures/sand/sand_specular.jpg");
 }
 
 
@@ -514,12 +511,12 @@ void initShader() {
 	// To create a shader program we use a helper function
 	// We pass it an array of the types of shaders we want to compile
 	// and the corrosponding locations for the files of each stage
-	g_testShader = makeShaderProgramFromFile({ GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./work/res/shaders/shaderTest.vert", "./work/res/shaders/shaderTest.frag" });
-	g_skyboxShader = makeShaderProgramFromFile({ GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./work/res/shaders/shaderSkybox.vert", "./work/res/shaders/shaderSkybox.frag" });
-	g_normalMapShaderPCF = makeShaderProgramFromFile({GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./work/res/shaders/shaderNormalMapPCF.vert", "./work/res/shaders/shaderNormalMapPCF.frag" });
-	g_normalMapShader = makeShaderProgramFromFile({ GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./work/res/shaders/shaderNormalMap.vert", "./work/res/shaders/shaderNormalMap.frag" });
-	g_phongTexShader = makeShaderProgramFromFile({ GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./work/res/shaders/shaderPhongTex.vert", "./work/res/shaders/shaderPhongTex.frag" });
-	g_phongShader = makeShaderProgramFromFile({ GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./work/res/shaders/shaderPhong.vert", "./work/res/shaders/shaderPhong.frag" });
+	g_testShader = makeShaderProgramFromFile({ GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./res/shaders/shaderTest.vert", "./res/shaders/shaderTest.frag" });
+	g_skyboxShader = makeShaderProgramFromFile({ GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./res/shaders/shaderSkybox.vert", "./res/shaders/shaderSkybox.frag" });
+	g_normalMapShaderPCF = makeShaderProgramFromFile({GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./res/shaders/shaderNormalMapPCF.vert", "./res/shaders/shaderNormalMapPCF.frag" });
+	g_normalMapShader = makeShaderProgramFromFile({ GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./res/shaders/shaderNormalMap.vert", "./res/shaders/shaderNormalMap.frag" });
+	g_phongTexShader = makeShaderProgramFromFile({ GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./res/shaders/shaderPhongTex.vert", "./res/shaders/shaderPhongTex.frag" });
+	g_phongShader = makeShaderProgramFromFile({ GL_VERTEX_SHADER, GL_FRAGMENT_SHADER }, { "./res/shaders/shaderPhong.vert", "./res/shaders/shaderPhong.frag" });
 }
 
 
@@ -696,9 +693,11 @@ void render(int width, int height) {
 		glScalef(0.001f, 0.001f, 0.001f);
 		trees->renderGeometry(g_rot);
 		glPopMatrix();*/
+		g_water->render();
 		glUseProgram(0);
 		glActiveTexture(GL_TEXTURE0);
 	}
+
 
 
 	//without shader
@@ -863,16 +862,9 @@ int main(int argc, char **argv) {
 	initTexture();
 	initShader();
 
-	trees = new Geometry("./work/res/assets/PalmTree.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f);
-        grass = new Geometry("./work/res/assets/GRASS.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f);
-        
-	g_table = new Geometry("./work/res/assets/table.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,10.0f);
-	g_sphere = new Geometry("./work/res/assets/sphere.obj", 0.0f, 0.0f, 0.0f, -5.0f, 2.0f+1.0f, 5.0f, 1.0f, 10.0f);
-	g_box = new Geometry("./work/res/assets/box.obj", 0.0f, 0.0f, 0.0f, 5.0f, 2.5f, -5.0f, 1.0f, 10.0f);
-	g_bunny = new Geometry("./work/res/assets/bunny.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f, 1.0f, 10.0f);
-	g_torus = new Geometry("./work/res/assets/torus.obj", 0.0f, 0.0f, 0.0f, 5.0f, 1.0f, 5.0f, 1.0f, 1.0f);
-	g_teapot = new Geometry("./work/res/assets/teapot.obj", 0.0f, 0.0f, 0.0f, -5.0f, 0.5f, -5.0f, 1.0f, 10.0f);
-	
+	trees = new Geometry("./res/assets/PalmTree.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+        grass = new Geometry("./res/assets/GRASS.obj", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+
 	spotlight = new Spotlight();
 	skybox = new Skybox();
         
@@ -884,6 +876,8 @@ int main(int argc, char **argv) {
         
 	procedural = new Procedural(textures, texturesNormal, g_normalMapShaderPCF, trees,grass ,seedInput,oasisDiamiterInput,oasisDepthInput);
 
+	g_water = new Water(vec2(-oasisDiamiterInput, -oasisDiamiterInput),
+						vec2(oasisDiamiterInput, oasisDiamiterInput), -5);
 
 	// Loop until the user closes the window
 	while (!glfwWindowShouldClose(g_window)) {

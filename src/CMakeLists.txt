@@ -16,6 +16,7 @@ SET(headers
 	"perlin.hpp"
 	"terrain.hpp"
 	"procedural.hpp"
+	"water.hpp"
 )
 
 

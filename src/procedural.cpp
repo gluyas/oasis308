@@ -501,6 +501,6 @@ void Procedural::renderGeometry(cgra::vec3 g_rot) {
     //dont use normal map
     glUniform1i(glGetUniformLocation(g_normalMapShaderPCF, "useNorm"), 0);
     for (GLuint water : m_displayListWater) {
-        glCallList(water);
+        //glCallList(water);
     }
 }
